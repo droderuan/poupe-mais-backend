@@ -1,0 +1,14 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 33016,
+  "username": "root",
+  "password": "poupemais",
+  "database": "poupe-mais",
+  "entities": ["dist/**/Entities/*.entity.js"],
+  "migrations": ["typeorm/migration/*.js"],
+  "cli": {
+      "migrationsDir": "typeorm/migration"
+  },
+  "synchronize": true
+}
