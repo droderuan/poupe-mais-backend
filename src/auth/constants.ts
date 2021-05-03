@@ -1,0 +1,4 @@
+export default () => ({
+  secret: '40EA66420EE3DBBEFF4FFA20E39DCB6A58A80F89629701CAB4E99CD1741A2F15',
+  expiresIn: '7d',
+});

@@ -1,7 +1,8 @@
-export default interface User {
+export default interface CreateUserDTO {
   id: string;
   name: string;
-  password: string;
+  last_name: string;
+  phone: string;
   is_deleted: boolean;
   created_at: Date;
   updated_at: Date;

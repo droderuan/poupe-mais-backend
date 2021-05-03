@@ -7,7 +7,7 @@ import {
 import { ObjectSchema } from 'joi';
 
 @Injectable()
-export class CreateUserValidationPipe implements PipeTransform {
+export class JoiValidationPipe implements PipeTransform {
   constructor(private schema: ObjectSchema) {}
 
   transform(value: any, metadata: ArgumentMetadata) {

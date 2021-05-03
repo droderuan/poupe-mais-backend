@@ -10,10 +10,19 @@ import {
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: number;
+  id: string;
 
   @Column()
   name: string;
+
+  @Column()
+  last_name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  phone: string;
 
   @Column()
   password: string;

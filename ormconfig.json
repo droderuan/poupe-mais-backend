@@ -6,7 +6,7 @@
   "password": "poupemais",
   "database": "poupe-mais",
   "entities": ["dist/**/Entities/*.entity.js"],
-  "migrations": ["typeorm/migration/*.js"],
+  "migrations": ["dist/typeorm/migration/*.js"],
   "cli": {
       "migrationsDir": "typeorm/migration"
   },
