@@ -7,8 +7,8 @@ import {
   DeleteDateColumn,
 } from 'typeorm';
 
-@Entity('users')
-export class User {
+@Entity('subscriptions')
+export class Subscription {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -16,19 +16,7 @@ export class User {
   name: string;
 
   @Column()
-  last_name: string;
-
-  @Column()
-  email: string;
-
-  @Column()
-  phone: string;
-
-  @Column()
-  password: string;
-
-  @Column({ default: false })
-  is_deleted: boolean;
+  description: string;
 
   @CreateDateColumn()
   created_at: Date;

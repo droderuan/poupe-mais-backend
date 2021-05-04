@@ -5,10 +5,10 @@
   "username": "root",
   "password": "poupemais",
   "database": "poupe-mais",
-  "entities": ["dist/**/Entities/*.entity.js"],
-  "migrations": ["dist/typeorm/migration/*.js"],
+  "entities": ["dist/**/Entities/*.entity.{js,ts}"],
+  "migrations": ["dist/typeorm/migration/*.{js,ts}"],
   "cli": {
-      "migrationsDir": "typeorm/migration"
+      "migrationsDir": "src/typeorm/migration"
   },
   "synchronize": true
 }

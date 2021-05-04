@@ -19,6 +19,11 @@ export class createTransactionTypeTable1619992130901
             isNullable: false,
           },
           {
+            name: 'url',
+            type: 'varchar',
+            isNullable: true,
+          },
+          {
             name: 'created_at',
             type: 'timestamp',
             default: 'now()',

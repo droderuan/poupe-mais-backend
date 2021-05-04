@@ -1,4 +1,4 @@
-import { User } from '../Entities/user.entities';
+import { User } from '../Entities/user.entitie';
 
 export default interface AuthenticateDTO {
   user: User;
