@@ -68,8 +68,6 @@ export class ObjectiveService {
     objective.quantity = data?.quantity ?? objective.quantity;
     objective.name = data?.name ?? objective.name;
 
-    console.log(objective);
-
     await this.objectiveRepository.save(objective);
 
     return objective;
