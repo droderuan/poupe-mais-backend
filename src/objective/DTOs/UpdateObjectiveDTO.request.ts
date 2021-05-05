@@ -2,6 +2,6 @@ export default interface CreateObjectiveDTO {
   name?: string;
   quantity?: number;
   userId: string;
-  objectiveId: string;
+  objective_id: string;
   already_placed?: number;
 }

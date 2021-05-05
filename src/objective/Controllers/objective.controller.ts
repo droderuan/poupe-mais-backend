@@ -11,6 +11,7 @@ import {
 } from '@nestjs/common';
 import * as Joi from 'joi';
 import { JwtAuthGuard } from 'src/auth/Guards/jwt-auth.guard';
+import { RequestUpdateObjectiveDTO } from '../DTOs';
 import { JoiValidationPipe } from '../Pipes/JoiValidation.pipe';
 import { ObjectiveService } from '../Providers/objective.service';
 
@@ -44,12 +45,13 @@ export class ObjectiveController {
       Joi.object({
         name: Joi.string().required(),
         quantity: Joi.number().required(),
+        objective_id: Joi.string().required(),
         already_placed: Joi.number(),
       }),
     ),
   )
   @Put()
-  update(@Body() body, @Request() request) {
+  update(@Body() body: RequestUpdateObjectiveDTO, @Request() request) {
     return this.objectiveService.update({ ...body, ...request.user });
   }
 

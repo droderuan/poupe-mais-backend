@@ -27,7 +27,9 @@ export class ObjectiveService {
   }
 
   public async create(data: RequestCreateObjectiveDTO) {
-    const user = await this.userRepository.findOne(data.userId);
+    const user = await this.userRepository.findOne(data.userId, {
+      relations: ['subscription'],
+    });
 
     if (!user) {
       throw new BadRequestException('Objective does not exist');
@@ -56,7 +58,7 @@ export class ObjectiveService {
   }
 
   public async update(data: RequestUpdateObjectiveDTO) {
-    const objective = await this.objectiveRepository.findOne(data.objectiveId);
+    const objective = await this.objectiveRepository.findOne(data.objective_id);
 
     if (!objective) {
       throw new BadRequestException('Objective does not exist');
@@ -65,6 +67,8 @@ export class ObjectiveService {
     objective.already_placed = data?.already_placed ?? objective.already_placed;
     objective.quantity = data?.quantity ?? objective.quantity;
     objective.name = data?.name ?? objective.name;
+
+    console.log(objective);
 
     await this.objectiveRepository.save(objective);
 
