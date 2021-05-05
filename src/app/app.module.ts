@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import { UsersModule } from '../users/users.module';
 import { AuthModule } from '../auth/auth.module';
 import { SubscriptionModule } from '../subscription/subscription.module';
+import { ObjectiveModule } from '../objective/objective.module';
+import { TransactionModule } from '../transaction/transaction.module';
 
 import { Connection, getConnectionOptions } from 'typeorm';
 import { ConfigModule } from '@nestjs/config';
@@ -24,6 +26,8 @@ import JwtConfiguration from '../auth/constants';
     UsersModule,
     AuthModule,
     SubscriptionModule,
+    ObjectiveModule,
+    TransactionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

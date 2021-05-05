@@ -8,7 +8,6 @@ import {
   UsePipes,
   Put,
 } from '@nestjs/common';
-import { RequestCreateUserDTO, RequestUpdateUserDTO } from '../DTOs';
 import { JoiValidationPipe } from '../Pipes/JoiValidation.pipe';
 import { UsersService } from '../Providers/users.service';
 import * as Joi from 'joi';
@@ -21,7 +20,7 @@ export class UsersController {
   @UseGuards(JwtAuthGuard)
   @Get('')
   getUser(@Request() request) {
-    return this.usersService.userData(request);
+    return this.usersService.userData(request.user);
   }
 
   @UsePipes(
@@ -37,8 +36,8 @@ export class UsersController {
     ),
   )
   @Post()
-  async createUser(@Body() data: RequestCreateUserDTO) {
-    return await this.usersService.createUser(data);
+  async createUser(@Body() body, @Request() data) {
+    return await this.usersService.createUser({ ...body, ...data.user });
   }
 
   @UseGuards(JwtAuthGuard)
@@ -55,7 +54,7 @@ export class UsersController {
     ),
   )
   @Put()
-  async updateUser(@Body() data: RequestUpdateUserDTO) {
-    return await this.usersService.updateUser(data);
+  async updateUser(@Body() body, @Request() data) {
+    return await this.usersService.updateUser({ ...body, ...data.user });
   }
 }

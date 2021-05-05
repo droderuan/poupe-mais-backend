@@ -14,6 +14,8 @@ export class SubscriptionService {
   public async create(data: RequestCreateSubscriptionDTO) {
     const subscription = this.subscriptionRepository.create(data);
 
+    subscription.description = data?.description ?? '';
+
     await this.subscriptionRepository.save(subscription);
 
     return subscription;

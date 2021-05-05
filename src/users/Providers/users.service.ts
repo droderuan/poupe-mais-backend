@@ -29,7 +29,7 @@ export class UsersService {
   }
 
   async createUser(data: RequestCreateUserDTO): Promise<User> {
-    const checkEmail = this.userRepository.findOne({
+    const checkEmail = await this.userRepository.findOne({
       where: { email: data.email },
     });
 

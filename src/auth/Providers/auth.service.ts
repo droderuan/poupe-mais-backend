@@ -16,14 +16,13 @@ export class AuthService {
     const user = await this.userRepository.findOne({ where: { email } });
     if (user && user.password === pass) {
       delete user.password;
-
       return user;
     }
     return null;
   }
 
   async login(user: any) {
-    const payload = { sub: user.userId };
+    const payload = { sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };

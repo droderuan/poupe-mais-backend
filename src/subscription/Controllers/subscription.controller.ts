@@ -3,15 +3,15 @@ import {
   Controller,
   Get,
   Post,
+  Request,
   UseGuards,
   UsePipes,
 } from '@nestjs/common';
 import * as Joi from 'joi';
-import { required } from 'joi';
 import { JwtAuthGuard } from 'src/auth/Guards/jwt-auth.guard';
-import { RequestCreateSubscriptionDTO } from '../DTOs';
 import { JoiValidationPipe } from '../Pipes/JoiValidation.pipe';
 import { SubscriptionService } from '../Providers/subscription.service';
+import { RequestCreateSubscriptionDTO } from '../DTOs';
 
 @Controller('subscriptions')
 export class SubscriptionController {
@@ -32,7 +32,10 @@ export class SubscriptionController {
     ),
   )
   @Post()
-  createSubscription(@Body() data: RequestCreateSubscriptionDTO) {
-    return this.subscriptionService.create(data);
+  createSubscription(
+    @Body() body: RequestCreateSubscriptionDTO,
+    @Request() request,
+  ) {
+    return this.subscriptionService.create({ ...body, ...request.user });
   }
 }
