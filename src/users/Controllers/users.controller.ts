@@ -44,12 +44,12 @@ export class UsersController {
   @UsePipes(
     new JoiValidationPipe(
       Joi.object({
-        name: Joi.string(),
-        last_name: Joi.string(),
-        phone: Joi.string(),
+        name: Joi.string().required(),
+        last_name: Joi.string().required(),
+        phone: Joi.string().required(),
         password: Joi.string().min(6),
         confirm_password: Joi.ref('password'),
-        subscription: Joi.string().allow('free', 'Premium'),
+        subscription: Joi.string().allow('Free', 'Premium').required(),
       }),
     ),
   )
